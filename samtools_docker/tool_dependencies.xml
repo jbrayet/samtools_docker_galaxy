@@ -3,7 +3,7 @@
     <package name="docker_samtools" version="0.1">
         <install version="1.0">
             <actions>
-                <action type="shell_command">docker pull jbrayet/samtools:v1.2</action>
+                <action type="shell_command">docker pull jbrayet/samtools:1.2</action>
             </actions>
         </install>
         <readme>

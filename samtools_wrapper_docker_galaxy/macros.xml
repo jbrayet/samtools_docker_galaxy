@@ -2,7 +2,7 @@
     <xml name="requirements">
         <requirements>
             <requirement type="package" version="0.1">docker_samtools</requirement>
-            <container type="docker">samtools:1.0</container>
+            <container type="docker">jbrayet/samtools:1.2</container>
             <yield/>
         </requirements>
     </xml>

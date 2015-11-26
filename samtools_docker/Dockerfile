@@ -8,22 +8,22 @@
 # Website:          https://github.com/samtools/samtools
 # Tags:             Genomics
 # Provides:         samtools 1.2
-# Base Image:       biodckr/biodocker
-# Build Cmd:        docker build --rm -t biodckrdev/samtools 1.2/.
-# Pull Cmd:         docker pull biodckrdev/samtools
-# Run Cmd:          docker run --rm -it biodckrdev/samtools <options> <files>
+# Build Cmd:        docker build --rm -t jbrayet/samtools:1.2 .
+# Pull Cmd:         docker pull jbrayet/samtools:1.2
+# Run Cmd:          docker run --rm -it jbrayet/samtools <options> <files>
 #################################################################
 
 # Set the base image to Ubuntu
-FROM biodckr/biodocker
+FROM ubuntu:14.04
 
 ################## BEGIN INSTALLATION ######################
 
-# Change user to root
-USER root
-
 RUN apt-get update && \
     apt-get install -y \
+      wget \
+      zip \
+      cmake \
+      zlib1g-dev \
       libncurses5-dev \
       libncursesw5-dev && \
     apt-get clean && \
@@ -45,15 +45,12 @@ RUN wget $URL/$ZIP -O $DST/$ZIP && \
     cd / && \
     rm -rf $DST/$FOLDER
 
-# Change user to back to biodocker
-USER biodocker
-
 # CHANGE WORKDIR TO /DATA
 WORKDIR /data
 
 ##################### INSTALLATION END #####################
 
 # File Author / Maintainer
-MAINTAINER Saulo Alves Aflitos <sauloal@gmail.com>
+MAINTAINER Jocelyn Brayet <jocelyn.brayet@curie.fr>
 
 
